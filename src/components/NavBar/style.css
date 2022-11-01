@@ -1,0 +1,32 @@
+.cart {
+  background-color: rgb(100, 98, 89);
+}
+
+
+.button-cart {
+  background-color: rgb(203, 196, 165);
+}
+
+
+.button-cart:not([disabled]):not(.disabled).active,
+.button-cart:not([disabled]):not(.disabled):hover {
+    color: rgb(203, 196, 165) !important;
+    background-color: rgb(203, 196, 165)!important;
+    border-color: rgb(203, 196, 165)!important;
+}
+
+.btn-wishlist:not([disabled]):not(.disabled).active,
+.btn-wishlist:not([disabled]):not(.disabled):active,
+.btn-wishlist:not([disabled]):not(.disabled).hover,
+.btn-wishlist:not([disabled]):not(.disabled):hover {
+    color: black !important;
+    background-color: rgb(203, 196, 165) !important;
+    border-color: rgb(203, 196, 165) !important;
+}
+
+.cart:not([disabled]):not(.disabled).active,
+.cart:not([disabled]):not(.disabled):hover {
+    color: rgb(100, 98, 89) !important;
+    background-color: rgb(100, 98, 89)!important;
+    border-color: rgb(100, 98, 89)!important;
+}

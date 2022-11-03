@@ -2,6 +2,7 @@ import React from "react";
 import { BsCart4 } from "react-icons/bs";
 import "./style.css";
 import { useWishListContext } from "../../hooks/context";
+import { useEffect } from "react";
 
 export const SingleProduct = ({ item }) => {
   const {
@@ -9,9 +10,12 @@ export const SingleProduct = ({ item }) => {
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
+    quantity
   } = useWishListContext();
-  const quantity = 0;
-  //aqui era para usar o getItemsQuantity(item.sku), mas ja da bug se eu usar
+
+  useEffect(() => {
+    getItemsQuantity(item.sku);
+  }, [getItemsQuantity, item])
 
   return (
     <>

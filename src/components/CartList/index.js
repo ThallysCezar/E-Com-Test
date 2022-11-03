@@ -27,9 +27,9 @@ export const CartList = ({ isOpen }) => {
         </div>
         <div className="offcanvas-body">
           <div>
-            {/* {cartItems.map(item => {
+            {cartItems.map(item => {
                 <CartItem key={item.sku} {...item}/>
-            })} */}
+            })}
           </div>
         </div>
       </div>

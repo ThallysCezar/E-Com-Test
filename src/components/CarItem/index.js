@@ -6,8 +6,8 @@ function CartItem({ sku, quantity }) {
   const baseURL =
     "https://run.mocky.io/v3/91af60d6-7265-4aa5-ae9b-c13ee3d247a8";
 
-//   const item = baseURL.find((i) => i.sku === sku);
-//   if (item == null) return null;
+  const item = baseURL.find((i) => i.sku === sku);
+  if (item == null) return null;
 
   return (
     <>

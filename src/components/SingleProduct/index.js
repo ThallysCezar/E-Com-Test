@@ -9,13 +9,10 @@ export const SingleProduct = ({ item }) => {
     getItemsQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
-    removeFromCart,
-    quantity
+    removeFromCart
   } = useWishListContext();
 
-  useEffect(() => {
-    getItemsQuantity(item.sku);
-  }, [getItemsQuantity, item])
+  const quantity = getItemsQuantity(item.sku);
 
   return (
     <>

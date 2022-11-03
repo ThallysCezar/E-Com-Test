@@ -11,7 +11,6 @@ export function useWishListContext() {
 export const WishListProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [quantity, setQuantity] = useState(0);
   const cartItem = [];
 
 
@@ -29,8 +28,7 @@ export const WishListProvider = ({ children }) => {
 )
 
   const getItemsQuantity = (sku) => {
-    const result = cartItems.find((item) => item.sku === sku)?.quantity || 0;
-    setQuantity(result);
+    return cartItems.find(item => item.sku === sku)?.quantity || 0
   };
 
   const increaseCartQuantity = (sku) => {
@@ -81,8 +79,7 @@ export const WishListProvider = ({ children }) => {
         openCart,
         closeCart,
         cartItem,
-        cartQuantity,
-        quantity
+        cartQuantity
       }}
     >
       {children}

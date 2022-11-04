@@ -1,12 +1,19 @@
+import axios from "axios";
 import { useState } from "react";
 import { createContext, useContext } from "react";
+import { Cookies } from "react-cookie";
 import { CartList } from "../components/CartList";
+import { formatCurrency } from "../utils/FormatCurrency";
 
 const WishListContext = createContext({});
 
 export function useWishListContext() {
   return useContext(WishListContext);
 }
+
+export const api = axios.create({
+  baseURL: 'https://run.mocky.io/v3/91af60d6-7265-4aa5-ae9b-c13ee3d247a8',
+})
 
 export const WishListProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -27,6 +34,9 @@ export const WishListProvider = ({ children }) => {
     0
 )
 
+  const totalPrice = (product, quantity) => {
+  formatCurrency(product.price * quantity)
+  }
   const getItemsQuantity = (sku) => {
     return cartItems.find(item => item.sku === sku)?.quantity || 0
   };
@@ -79,7 +89,8 @@ export const WishListProvider = ({ children }) => {
         openCart,
         closeCart,
         cartItem,
-        cartQuantity
+        cartQuantity,
+        totalPrice
       }}
     >
       {children}

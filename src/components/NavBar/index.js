@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import "./style.css";
 import { useWishListContext } from "../../hooks/context";
+import { formatCurrency } from "../../utils/FormatCurrency";
 import { CartList } from "../CartList";
+import CartItem from "../CarItem";
 
-const NavBar = () => {
-  const { openCart, cartQuantity } = useWishListContext();
+const NavBar = ({sku, quantity}) => {
+  const { openCart, cartQuantity, totalPrice } = useWishListContext();
+
 
   return (
     <>
@@ -53,7 +56,7 @@ const NavBar = () => {
                       </span>
                     </div>
                     <div className="btn btn-wishlist">
-                      CART: {cartQuantity} ITEM(S) - $0.00
+                      CART: {cartQuantity} ITEM(S) ${totalPrice}
                     </div>
                   </button>
               </div>

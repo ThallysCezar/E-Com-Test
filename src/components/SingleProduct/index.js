@@ -2,9 +2,9 @@ import React from "react";
 import { BsCart4 } from "react-icons/bs";
 import "./style.css";
 import { useWishListContext } from "../../hooks/context";
-import { useEffect } from "react";
+import { formatCurrency } from "../../utils/FormatCurrency";
 
-export const SingleProduct = ({ item }) => {
+export const SingleProduct = ({ product }) => {
   const {
     getItemsQuantity,
     increaseCartQuantity,
@@ -12,25 +12,25 @@ export const SingleProduct = ({ item }) => {
     removeFromCart
   } = useWishListContext();
 
-  const quantity = getItemsQuantity(item.sku);
+  const quantity = getItemsQuantity(product.sku);
 
   return (
     <>
       {/* */}
-      <div className="col" key={item.sku}>
+      <div className="col" key={product.sku}>
         <div className="card">
           {/* IMAGE */}
           <figure>
-            <img src={item.image} className="card-img-top" alt={item.name} />
+            <img src={product.image} className="card-img-top" alt={product.name} />
           </figure>
           {/* END IMAGE */}
           {/* PRICE AND DESCRIPTION */}
           <div className="card-body">
-            <h5 className="card-title">${item.priceSpecification.price}</h5>
+            <h5 className="card-title">{formatCurrency(product.priceSpecification.price)}</h5>
             {/* PRICE */}
             <p className="card-text">
               {/* DESCRIPTION */}
-              {item.name}
+              {product.name}
             </p>
             {/* Right elements */}
             <div className="d-flex align-items-center">
@@ -44,7 +44,7 @@ export const SingleProduct = ({ item }) => {
                   <div
                     className="btn btn-wishlist"
                     onClick={() => {
-                      increaseCartQuantity(item.sku);
+                      increaseCartQuantity(product.sku);
                     }}
                   >
                     ADD TO CARD
@@ -62,7 +62,7 @@ export const SingleProduct = ({ item }) => {
                     <button
                       className="btn btn-primary"
                       onClick={() => {
-                        decreaseCartQuantity(item.sku);
+                        decreaseCartQuantity(product.sku);
                       }}
                     >
                       -
@@ -73,7 +73,7 @@ export const SingleProduct = ({ item }) => {
                     <button
                       className="btn btn-primary"
                       onClick={() => {
-                        increaseCartQuantity(item.sku);
+                        increaseCartQuantity(product.sku);
                       }}
                     >
                       +
@@ -82,7 +82,7 @@ export const SingleProduct = ({ item }) => {
                   <button
                     className="btn btn-danger"
                     onClick={() => {
-                      removeFromCart(item.sku);
+                      removeFromCart(product.sku);
                     }}
                   >
                     Remove
